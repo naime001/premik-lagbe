@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রমিক প্রেমিকার বাজার</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #101010;
+            color: #fff;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 50px;
+            color: #ff6347;
+        }
+
+        #hackButton {
+            background-color: #008CBA;
+            color: white;
+            padding: 15px 32px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #hackButton:hover {
+            background-color: #00bcd4;
+        }
+
+        #loading {
+            display: none;
+            font-size: 20px;
+            color: #ffcc00;
+            margin-top: 20px;
+        }
+
+        .console-text {
+            font-family: 'Courier New', Courier, monospace;
+            color: #0f0;
+            font-size: 20px;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        .error-message {
+            color: red;
+            font-size: 22px;
+            font-weight: bold;
+            animation: shake 0.5s ease-out infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <h1>প্রমিক প্রেমিকার বাজার</h1>
+    <button id="hackButton">প্রেমিক প্রেমিকা পেতে ক্লিক করো</button>
+    <div id="loading"></div>
+    <div id="log"></div>
+
+    <script>
+        const hackButton = document.getElementById('hackButton');
+        const loadingText = document.getElementById('loading');
+        const log = document.getElementById('log');
+
+        hackButton.addEventListener('click', startLoading);
+
+        function showConsoleMessage(message) {
+            const newMessage = document.createElement('p');
+            newMessage.classList.add('console-text');
+            newMessage.innerHTML = message;
+            log.appendChild(newMessage);
+        }
+
+        function startLoading() {
+            hackButton.disabled = true;  // Disable the button to prevent multiple clicks
+            loadingText.style.display = 'block';  // Show the loading text
+            loadingText.innerHTML = "প্রেমিক প্রেমিকা লোডিং হচ্ছে...";  // Set loading message
+
+            // Simulate a loading time of 2 seconds
+            setTimeout(() => {
+                loadingText.innerHTML = "";  // Clear loading text
+                showConsoleMessage("চুদিরভাই পিডানি খাওয়ার আগে পড়তে বয়!");  // Show April Fool message
+                hackButton.disabled = false;  // Re-enable the button
+            }, 2000);  // After 2 seconds, show the April Fool message
+        }
+    </script>
+</body>
+</html>
